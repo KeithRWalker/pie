@@ -40,7 +40,7 @@ const pies = [//PIE OBJECT ARRAY
       ingredients: 'Pecans, sugar, butter, flour',
       bakeTemp: 5000,
       drinkPairing: 'Milk',
-      imageURL: 'https://cookiesandcups.com/wp-content/uploads/2018/10/pecanpie-3.jpg',
+      imageUrl: 'https://cookiesandcups.com/wp-content/uploads/2018/10/pecanpie-3.jpg',
       instructor: 'Saul',
       iceCream: 'Vanilla',
     },
@@ -49,7 +49,7 @@ const pies = [//PIE OBJECT ARRAY
       ingredients: 'lemons, sugar, butter, flour',
       bakeTemp: 5000,
       drinkPairing: 'Water',
-      imageURL: 'https://www.williams-sonoma.com/wsimgs/rk/images/dp/recipe/201851/0020/img38l.jpg',
+      imageUrl: 'https://www.williams-sonoma.com/wsimgs/rk/images/dp/recipe/201851/0020/img38l.jpg',
       instructor: 'Saul',
       iceCream: 'none',
     },
@@ -67,7 +67,15 @@ const print = (id, message) => {//PRINTS TO DOM BY ELEMENT ID
   const pieLooper = () =>{//LOOPS THROUGH PIES (FOR EACH)//ASSIGNS VALUES OF PIES OBJECT TO PIESTRING//PRINT(ID, PIESTRING)
       let pieString = '';
       pies.forEach ((pie) => {
-        pieString += `<h2>NAME: ${pie.name}</h2>`;
+        pieString += `<div class = "card">`;
+        pieString +=    `<h2>Name: ${pie.name}</h2>`;
+        pieString +=    `<img src="${pie.imageUrl}">`;
+        pieString +=    `<p class = "firstP">Ingredients: ${pie.ingredients}</p>`;
+        pieString +=    `<p>Bake Temp: ${pie.bakeTemp} Degrees</p>`;
+        pieString +=    `<p>Drink Pairing: ${pie.drinkPairing}</p>`;
+        pieString +=    `<p>Ice Cream Pairing${pie.iceCream}</p>`;
+        pieString +=    `<p>This is ${pie.instructor}'s favorite pie!</p>`;
+        pieString += `</div>`;
       })
       print('testDivId', pieString);
   };
