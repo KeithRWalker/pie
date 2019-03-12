@@ -55,7 +55,8 @@ const pies = [//PIE OBJECT ARRAY
     },
   ];
 
-const init = () => {//INITIALIZATION FUNCTION
+const init = () => {//INITIALIZATION FUNCTION(
+    buttonEvents();
     pieLooper();
 };
 
@@ -78,6 +79,14 @@ const print = (id, message) => {//PRINTS TO DOM BY ELEMENT ID
         pieString += `</div>`;
       })
       print('testDivId', pieString);
+  };
+
+  const buttonClick = () => {
+    console.log('butts');
+  };
+
+  const buttonEvents = () => {
+    document.getElementById('Zoe').addEventListener('click', buttonClick)
   };
 
   init();//INITIALIZATION
