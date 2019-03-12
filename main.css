@@ -2,3 +2,43 @@ body{
     background-color: black;
     color: aliceblue;
 }
+
+.testDivClass{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.card{
+    display: flex;
+    flex-flow: column nowrap;
+    align-self: center;
+    align-content: center;
+    text-align: center;
+    border: 7px outset firebrick;
+    background-color: burlywood;
+    color: black;
+    width: 30%;
+    margin: 10px 10px 10px 10px;
+}
+
+.card img{
+    height: 300px;
+    width: 250px;
+    align-self: center;
+    /* padding: 25px; */
+    /* align-self: center;
+    border: .5px solid gainsboro; */
+}
+
+.card h2{
+    border-bottom: 5px solid darkred;
+    border-top: 5px solid darkred; 
+    background-color: tomato;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-top: 0px;
+}
+.firstP{
+    border-top: 5px solid darkred;
+    padding-top: 30px;
+}
