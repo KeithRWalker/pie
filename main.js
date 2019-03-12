@@ -82,7 +82,21 @@ const print = (id, message) => {//PRINTS TO DOM BY ELEMENT ID
   };
 
   const buttonClick = () => {
-    console.log('butts');
+    let btn = '';
+    pies.forEach ((pie) => {
+      if(pie.instructor === 'Zoe'){
+        btn += `<div class = "card">`;
+        btn +=    `<h2>Name: ${pie.name}</h2>`;
+        btn +=    `<img src="${pie.imageUrl}">`;
+        btn +=    `<p class = "firstP">Ingredients: ${pie.ingredients}</p>`;
+        btn +=    `<p>Bake Temp: ${pie.bakeTemp} Degrees</p>`;
+        btn +=    `<p>Drink Pairing: ${pie.drinkPairing}</p>`;
+        btn +=    `<p>Ice Cream Pairing${pie.iceCream}</p>`;
+        btn +=    `<p>This is ${pie.instructor}'s favorite pie!</p>`;
+        btn += `</div>`;
+      }
+    })
+    print('testDivId', btn);
   };
 
   const buttonEvents = () => {
