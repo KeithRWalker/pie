@@ -55,8 +55,9 @@ const pies = [//PIE OBJECT ARRAY
     },
   ];
 
-const init = () => {//INITIALIZATION FUNCTION
-    pieLooper();
+const init = () => {//INITIALIZATION FUNCTION(
+    buttonEvents();
+    pieLooper(pies);
 };
 
 const print = (id, message) => {//PRINTS TO DOM BY ELEMENT ID
@@ -64,9 +65,10 @@ const print = (id, message) => {//PRINTS TO DOM BY ELEMENT ID
     selectedDiv.innerHTML = message;
   };
 
-  const pieLooper = () =>{//LOOPS THROUGH PIES (FOR EACH)//ASSIGNS VALUES OF PIES OBJECT TO PIESTRING//PRINT(ID, PIESTRING)
+  const pieLooper = (anyArray) =>{//LOOPS THROUGH PIES (FOR EACH)//ASSIGNS VALUES OF PIES OBJECT TO PIESTRING//PRINT(ID, PIESTRING)
       let pieString = '';
-      pies.forEach ((pie) => {
+      
+      anyArray.forEach ((pie) => {
         pieString += `<div class = "card">`;
         pieString +=    `<h2>Name: ${pie.name}</h2>`;
         pieString +=    `<img src="${pie.imageUrl}">`;
@@ -78,6 +80,30 @@ const print = (id, message) => {//PRINTS TO DOM BY ELEMENT ID
         pieString += `</div>`;
       })
       print('testDivId', pieString);
+  };
+
+  const buttonClick = (e) => { // = "Event"
+    const buttonId = e.target.id;
+    const selectedPies = [];
+    
+    pies.forEach ((pie) => {
+      if(pie.instructor === buttonId){
+        selectedPies.push(pie);
+      };
+    })
+
+    if(buttonId=== 'All'){
+      pieLooper(pies);
+    } else{
+      pieLooper(selectedPies);
+    };
+  };
+
+  const buttonEvents = () => {
+    document.getElementById('All').addEventListener('click', buttonClick);
+    document.getElementById('Saul').addEventListener('click', buttonClick);
+    document.getElementById('Michael').addEventListener('click', buttonClick);
+    document.getElementById('Zoe').addEventListener('click', buttonClick);
   };
 
   init();//INITIALIZATION
