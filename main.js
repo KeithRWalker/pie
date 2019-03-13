@@ -57,7 +57,7 @@ const pies = [//PIE OBJECT ARRAY
 
 const init = () => {//INITIALIZATION FUNCTION(
     buttonEvents();
-    pieLooper();
+    pieLooper(pies);
 };
 
 const print = (id, message) => {//PRINTS TO DOM BY ELEMENT ID
@@ -65,9 +65,10 @@ const print = (id, message) => {//PRINTS TO DOM BY ELEMENT ID
     selectedDiv.innerHTML = message;
   };
 
-  const pieLooper = () =>{//LOOPS THROUGH PIES (FOR EACH)//ASSIGNS VALUES OF PIES OBJECT TO PIESTRING//PRINT(ID, PIESTRING)
+  const pieLooper = (anyArray) =>{//LOOPS THROUGH PIES (FOR EACH)//ASSIGNS VALUES OF PIES OBJECT TO PIESTRING//PRINT(ID, PIESTRING)
       let pieString = '';
-      pies.forEach ((pie) => {
+      
+      anyArray.forEach ((pie) => {
         pieString += `<div class = "card">`;
         pieString +=    `<h2>Name: ${pie.name}</h2>`;
         pieString +=    `<img src="${pie.imageUrl}">`;
@@ -81,26 +82,28 @@ const print = (id, message) => {//PRINTS TO DOM BY ELEMENT ID
       print('testDivId', pieString);
   };
 
-  const buttonClick = () => {
-    let btn = '';
+  const buttonClick = (e) => { // = "Event"
+    const buttonId = e.target.id;
+    const selectedPies = [];
+    
     pies.forEach ((pie) => {
-      if(pie.instructor === 'Zoe'){
-        btn += `<div class = "card">`;
-        btn +=    `<h2>Name: ${pie.name}</h2>`;
-        btn +=    `<img src="${pie.imageUrl}">`;
-        btn +=    `<p class = "firstP">Ingredients: ${pie.ingredients}</p>`;
-        btn +=    `<p>Bake Temp: ${pie.bakeTemp} Degrees</p>`;
-        btn +=    `<p>Drink Pairing: ${pie.drinkPairing}</p>`;
-        btn +=    `<p>Ice Cream Pairing${pie.iceCream}</p>`;
-        btn +=    `<p>This is ${pie.instructor}'s favorite pie!</p>`;
-        btn += `</div>`;
-      }
+      if(pie.instructor === buttonId){
+        selectedPies.push(pie);
+      };
     })
-    print('testDivId', btn);
+
+    if(buttonId=== 'All'){
+      pieLooper(pies);
+    } else{
+      pieLooper(selectedPies);
+    };
   };
 
   const buttonEvents = () => {
-    document.getElementById('Zoe').addEventListener('click', buttonClick)
+    document.getElementById('All').addEventListener('click', buttonClick);
+    document.getElementById('Saul').addEventListener('click', buttonClick);
+    document.getElementById('Michael').addEventListener('click', buttonClick);
+    document.getElementById('Zoe').addEventListener('click', buttonClick);
   };
 
   init();//INITIALIZATION
